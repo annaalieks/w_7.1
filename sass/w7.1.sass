@@ -1,0 +1,239 @@
+//Fonts
+
+@font-face
+    font-family: "Basis Grotesque Pro"
+    src: url("../fonts/BasisGrotesquePro-Regular.woff2") format("woff2"), url("./fonts/BasisGrotesquePro-Regular.woff") format("woff"), url("./fonts/BasisGrotesquePro-Regular.eot") format("embedded opentype"), url("./fonts/BasisGrotesquePro-Regular.ttf") format("truetype")
+    font-weight: 400
+    font-size: 16px
+    line-height: 24px
+    font-display: fallback
+
+@font-face
+    font-family: "Basis Grotesque Pro"
+    src: url("../fonts/BasisGrotesquePro-Bold.woff2") format("woff2"), url("./fonts/BasisGrotesquePro-Bold.woff") format("woff"), url("./fonts/BasisGrotesquePro-Bold.eot") format("embedded opentype"), url("./fonts/BasisGrotesquePro-Bold.ttf") format("truetype")
+    font-weight: 700
+    font-display: fallback
+
+@font-face
+    font-family: "Basis Grotesque Pro"
+    src: url("../fonts/BasisGrotesquePro-Light.woff2") format("woff2"), url("./fonts/BasisGrotesquePro-Light.woff") format("woff"), url("./fonts/BasisGrotesquePro-Light.eot") format("embedded opentype"), url("./fonts/BasisGrotesquePro-Light.ttf") format("truetype")
+    font-weight: 300
+    font-size: 16px
+    line-height: 24px
+    font-display: fallback
+
+// Mixins
+
+@mixin font($font-weight: 400)
+    font-family: "Basis Grotesque Pro", system-ui
+    font-weight: $font-weight
+    letter-spacing: -0.03em
+
+@mixin table()
+    @media only screen and (min-width: 768px)
+        @content
+
+@mixin desctop()
+    @media only screen and (min-width: 1200px)
+        @content
+
+@mixin header-flex($justify-content: space-between)
+    display: flex
+    flex-basis: 50%
+    justify-content: $justify-content
+    align-items: top
+    padding-top: 25px
+
+@mixin hover()
+    color: #0536FC
+    cursor: pointer
+
+// Variables
+
+$border-black: 0.5px solid #000
+$border-blue: 0.5px solid #000
+$blue: #0536FC
+
+// Basics
+
+*, *:before, *:after
+    box-sizing: border-box
+
+body
+    @include font
+    margin: 0 auto
+    min-width: 280px
+
+.uppercase
+    text-transform: uppercase
+
+// Header
+
+.desctop
+    display: none
+
+.header
+    &--mobile
+        display: flex
+        justify-content: space-between
+        align-items: center
+        padding: 24px 34px
+    &__button
+        appearance: none
+        border: none
+        background: none
+        font-size: 16px
+    &__button:hover
+        @include hover
+    &__list
+        margin: 0
+        display: flex
+        padding: 0
+        gap: 16px
+        align-items: center
+    &__item
+        list-style: none
+    &__item:hover
+        @include hover
+
+// Heading
+
+.heading
+    margin: 50px auto 50px
+    width: 80%
+    &__subtitle
+        @include font($font-weight: 700)
+        margin: 0
+        &--blue
+            color: $blue
+            opacity: 0.9
+    &__title
+        @include font($font-weight: 700)
+        font-size: 30px
+        line-height: 34px
+        margin: 0
+        padding-top: 30px
+        padding-bottom: 70px
+    &__inscription
+        opacity: 0.6
+        @include font($font-weight: 400)
+
+// Scroll
+
+.scroll
+    margin-right: 35px
+    margin-top: 50px
+    display: flex
+    justify-content: end
+    &__icon
+        align-self: end
+        width: 30px
+        height: 30px
+        animation: bounce 2s ease infinite
+
+@keyframes bounce
+    0%, 20%, 50%, 80%, 100%
+        transform: translateY(0)
+    40%
+        transform: translateY(-50px)
+        transform: scale(1.5)
+    60%
+        transform: translateY(-50px)
+
+// Tab
+
+.nav
+    display: flex
+    padding: 0
+    margin: 0
+    &__item
+        text-align: center
+        list-style: none
+        flex-basis: 50%
+    &__link
+        display: block
+        text-decoration: none
+        color: $blue
+        padding-top: 33px
+        padding-bottom: 33px
+        &:focus
+            background: $blue
+            color: #FFF
+            transition: background 500ms linear, color 500ms linear
+
+.active
+    background: $blue
+    color: #FFF
+    &:focus
+        background: #FFF
+        color: $blue
+        transition: background 500ms linear, color 500ms linear
+
+@include table
+
+    // Header
+
+    .mobile
+        display: none
+
+    .header
+        padding: 0
+        &--desctop
+            display: flex
+        &--desctop-left
+            @include header-flex($justify-content: space-around)
+        &--desctop-right
+            @include header-flex
+        &__button::after
+            content: ""
+            display: inline-block
+            margin-left: 10px
+            margin-bottom: 4px
+            width: 8px
+            height: 8px
+            border-bottom: $border-black
+            border-right: $border-black
+            transform: rotate(45deg)
+        &__button:hover::after
+            border-bottom: $border-blue
+            border-right: $border-blue
+
+    .logo
+        display: flex
+        margin: 0
+        align-items: top
+        &__icon
+            padding-right: 10px
+        &__inscription
+            opacity: 0.35
+            @include font($font-weight: 300)
+
+    .button--lang
+        margin-right: 40px
+        color: $blue
+
+    // Heading
+
+    .heading
+        margin: 0
+        width: auto
+        padding: 130px 0 150px 14.5%
+        &__title
+            font-size: 57px
+            line-height: 59px
+
+    // Scroll
+
+    .scroll
+        margin-top: 0
+
+@include desctop
+
+    // Header
+
+    .header
+        &__list
+            gap: 50px
+
+    .button--lang
+        margin-right: 60px
