@@ -148,25 +148,16 @@ body
     margin: 0
     &__item
         text-align: center
-        list-style: none
         flex-basis: 50%
+        text-decoration: none
     &__link
         display: block
-        text-decoration: none
         color: $blue
         padding-top: 33px
         padding-bottom: 33px
-        &:focus
-            background: $blue
-            color: #FFF
-            transition: background 500ms linear, color 500ms linear
-
-.active
-    background: $blue
-    color: #FFF
-    &:focus
-        background: #FFF
-        color: $blue
+    &__input:checked + &__link
+        background: $blue
+        color: #FFF
         transition: background 500ms linear, color 500ms linear
 
 @include table

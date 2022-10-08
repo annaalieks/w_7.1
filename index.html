@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <title>Навчай для України</title>
     <link rel="stylesheet" href="css/w7.1.css">
 </head>
+
 <body>
     <header class="mobile header header--mobile">
         <button class="header__button"><img alt="Menu" src="img/Menu.svg"></button>
@@ -53,14 +55,17 @@
             </div>
             <a class="scroll" href="#"><img class="scroll__icon" src="img/Vector.svg" alt="Scrolling arrow"></a>
         </section>
-        <nav>
-            <ul class="nav">
-                <li class="nav__item"><a
-                        class="nav__link uppercase" href="#">Партнерам</a></li>
-                <li class="nav__item"><a
-                        class="nav__link uppercase active" href="#">Інвестувати</a></li>
-            </ul>
+        <nav class="nav">
+            <a class="nav__item" href="#">
+                <input class="nav__input" type="radio" id="1" name="question" hidden>
+                <label class="nav__link uppercase" for="1">Партнерам</label>
+            </a>
+            <a class="nav__item" href="#">
+                <input class="nav__input" type="radio" id="2" name="question" hidden checked>
+                <label class="nav__link uppercase active" for="2">Інвестувати</label>
+            </a>
         </nav>
     </main>
 </body>
+
 </html>
